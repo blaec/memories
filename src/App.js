@@ -1,12 +1,30 @@
 import {useEffect, useState} from "react";
 import React from 'react';
+import {
+    Routes,
+    Route
+} from "react-router-dom";
 
 import Layout from "./hoc/Layout";
+import {reactLinks} from "./Utils/UriUtils";
+import Memories from "./Pages/Memories";
+import Settings from "./Pages/Settings";
 
 
 const App = () => {
+    const {
+        memories,
+        settings,
+    } = reactLinks;
+
     const layout = (
         <Layout>
+            <Routes>
+
+                {/* Menu items */}
+                <Route path={memories} element={<Memories/>}/>
+                <Route path={settings} element={<Settings/>}/>
+            </Routes>
         </Layout>
     );
 
