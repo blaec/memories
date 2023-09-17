@@ -1,5 +1,6 @@
 # Using file as db
-- `npm install -g json-server`
+- `npm install -g json-server` _install server_
+- `json-server --watch config/db.json --port 3033` _start server_
 
 
 # Getting Started with Create React App
