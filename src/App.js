@@ -1,17 +1,17 @@
-import {useEffect, useState} from "react";
-import React from 'react';
-import {
-    Routes,
-    Route
-} from "react-router-dom";
+import React, {useEffect} from "react";
+import {Route, Routes} from "react-router-dom";
+import {useDispatch} from "react-redux";
 
 import Layout from "./hoc/Layout";
 import {reactLinks} from "./Utils/UriUtils";
 import Memories from "./Pages/Memories";
 import Settings from "./Pages/Settings";
+import {fetchAlbums} from "./store/state/album/album-action";
 
 
 const App = () => {
+    const dispatch = useDispatch();
+
     const {
         memories,
         settings,
@@ -27,6 +27,10 @@ const App = () => {
             </Routes>
         </Layout>
     );
+
+    useEffect(() => {
+        dispatch(fetchAlbums());
+    }, []);
 
 
     return (
