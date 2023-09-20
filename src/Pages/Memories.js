@@ -8,7 +8,7 @@ const Memories = () => {
     const {albums, isAlbumsLoaded} = useSelector(state => state.album.albums);
 
     return isAlbumsLoaded
-        ? albums.map((album) =>
+        ? albums.imagesFromOtherCountries.map((album) =>
             (<Card sx={{maxWidth: 345}}>
                     <CardActionArea>
                         <a href={album.album}
