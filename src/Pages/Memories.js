@@ -9,7 +9,9 @@ const Memories = () => {
 
     return isAlbumsLoaded
         ? albums.imagesFromOtherCountries.map((album) =>
-            (<Card sx={{maxWidth: 345}}>
+            (<Card sx={{maxWidth: 500, mt: 2, borderRadius: 4, transition: '0.2s', '&:hover': {
+                        transform: 'scale(1.05)',
+                    }}}>
                     <CardActionArea>
                         <a href={album.album}
                            target="_blank"
@@ -18,7 +20,7 @@ const Memories = () => {
                             <img
                                 src={album.image}
                                 alt=""
-                                style={{width: '350px', height: '200px', 'object-fit': 'cover'}}
+                                style={{width: 500, height: 300, 'object-fit': 'cover'}}
                                 onError={(e) => {
                                     e.target.onerror = null;
                                     e.target.src = ""
