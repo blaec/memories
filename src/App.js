@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {useDispatch} from "react-redux";
 
 import Layout from "./hoc/Layout";
@@ -14,7 +14,12 @@ const App = () => {
 
     const {
         memories,
-        settings,
+        guestInIsrael,
+        guestInKremenchuk,
+        picsFromIsrael,
+        picsFromKremenchuk,
+        picsFromCountries,
+        misc,
     } = reactLinks;
 
     const layout = (
@@ -23,7 +28,14 @@ const App = () => {
 
                 {/* Menu items */}
                 <Route path={memories} element={<Memories/>}/>
-                <Route path={settings} element={<Settings/>}/>
+                <Route path={guestInIsrael} element={<Memories/>}/>
+                <Route path={guestInKremenchuk} element={<Memories/>}/>
+                <Route path={picsFromIsrael} element={<Memories/>}/>
+                <Route path={picsFromKremenchuk} element={<Memories/>}/>
+                <Route path={picsFromCountries} element={<Memories/>}/>
+                <Route path={misc} element={<Settings/>}/>
+
+                <Route path="*" element={<Navigate replace to={memories}/>}/>
             </Routes>
         </Layout>
     );
