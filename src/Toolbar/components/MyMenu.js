@@ -39,13 +39,13 @@ const mainItemsData = [
 const guestItemsData = [
     {
         text: "В Израиле",
-        link: reactLinks.settings,
+        link: reactLinks.guestInIsrael,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
     {
         text: "В Кременчуге",
-        link: reactLinks.settings,
+        link: reactLinks.guestInKremenchuk,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
@@ -53,19 +53,19 @@ const guestItemsData = [
 const travelItemsData = [
     {
         text: "Израиля",
-        link: reactLinks.settings,
+        link: reactLinks.picsFromIsrael,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
     {
         text: "Кременчуга",
-        link: reactLinks.settings,
+        link: reactLinks.picsFromKremenchuk,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
     {
         text: "других стран",
-        link: reactLinks.settings,
+        link: reactLinks.picsFromCountries,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
@@ -73,7 +73,7 @@ const travelItemsData = [
 const otherItemsData = [
     {
         text: "Разное",
-        link: reactLinks.settings,
+        link: reactLinks.misc,
         icon: <PhotoSizeSelectActualTwoToneIcon/>
     },
 ];
