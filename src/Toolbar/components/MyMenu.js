@@ -1,4 +1,5 @@
 import React from 'react';
+import {useLocation} from "react-router";
 
 import MyListItem from "../../UI/MyListItem";
 import {reactLinks} from "../../Utils/UriUtils";
@@ -12,7 +13,7 @@ import PhotoSizeSelectActualTwoToneIcon from '@mui/icons-material/PhotoSizeSelec
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
 
 
-const getMenuItemsBlock = (itemsData) => {
+const getMenuItemsBlock = (itemsData, pathname) => {
     return  itemsData.map((item, index) => {
             const {text, link, icon, style} = item;
 
@@ -23,6 +24,7 @@ const getMenuItemsBlock = (itemsData) => {
                     link={link}
                     icon={icon}
                     style={style}
+                    pathname={pathname}
                 />
             );
         }
@@ -80,23 +82,24 @@ const otherItemsData = [
 
 
 const MyMenu = () => {
+    const {pathname} = useLocation();
 
     return (
         <div>
             <Toolbar/>
             <List>
-                {getMenuItemsBlock(mainItemsData)}
+                {getMenuItemsBlock(mainItemsData, pathname)}
                 <MyCollapseListItem
                     caption="В гостях"
                     icon={<LuggageTwoToneIcon/>}
-                    menuBlock={() => getMenuItemsBlock(guestItemsData)}
+                    menuBlock={() => getMenuItemsBlock(guestItemsData, pathname)}
                 />
                 <MyCollapseListItem
                     caption="Фото из"
                     icon={<ConnectingAirportsTwoToneIcon/>}
-                    menuBlock={() => getMenuItemsBlock(travelItemsData)}
+                    menuBlock={() => getMenuItemsBlock(travelItemsData, pathname)}
                 />
-                {getMenuItemsBlock(otherItemsData)}
+                {getMenuItemsBlock(otherItemsData, pathname)}
                 {/*<Divider/>*/}
             </List>
         </div>
