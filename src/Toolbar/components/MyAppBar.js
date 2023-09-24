@@ -2,7 +2,7 @@ import React from 'react';
 
 import {drawer} from "../../Utils/Constants";
 
-import {AppBar, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, IconButton, Toolbar} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 

@@ -1,20 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import MyListItem from "../../UI/MyListItem";
 import {reactLinks} from "../../Utils/UriUtils";
+import MyCollapseListItem from "../../UI/MyCollapseListItem";
 
-import {Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, Toolbar} from "@mui/material";
-import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
-import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone';
+import {List, Toolbar} from "@mui/material";
 import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
 import LuggageTwoToneIcon from '@mui/icons-material/LuggageTwoTone';
 import ConnectingAirportsTwoToneIcon from '@mui/icons-material/ConnectingAirportsTwoTone';
 import PhotoSizeSelectActualTwoToneIcon from '@mui/icons-material/PhotoSizeSelectActualTwoTone';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import ExpandLess from '@mui/icons-material/ExpandLess';
-import ExpandMore from '@mui/icons-material/ExpandMore';
-import StarBorder from '@mui/icons-material/StarBorder';
-import MyCollapseListItem from "../../UI/MyCollapseListItem";
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
 
 
@@ -94,12 +88,12 @@ const MyMenu = () => {
                 {getMenuItemsBlock(mainItemsData)}
                 <MyCollapseListItem
                     caption="В гостях"
-                    icon=<LuggageTwoToneIcon/>
+                    icon={<LuggageTwoToneIcon/>}
                     menuBlock={() => getMenuItemsBlock(guestItemsData)}
                 />
                 <MyCollapseListItem
                     caption="Фото из"
-                    icon=<ConnectingAirportsTwoToneIcon/>
+                    icon={<ConnectingAirportsTwoToneIcon/>}
                     menuBlock={() => getMenuItemsBlock(travelItemsData)}
                 />
                 {getMenuItemsBlock(otherItemsData)}
