@@ -1,11 +1,8 @@
 import React from 'react';
-
 import useAlbums from "../hooks/use-albums";
 
-
-
-const Memories = () => {
+const ImagesFromCountries = () => {
     return useAlbums("imagesFromOtherCountries");
 };
 
-export default Memories;
+export default ImagesFromCountries;
