@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 
 import useBreakpoint from "../hooks/use-breakpoint";
@@ -12,16 +12,24 @@ const _cardRoot = {
         transform: 'scale(1.03)',
     }
 };
+const _cardContentFixed = {
+    minHeight: 100,
+};
 const _cardContent = {
-    height: 180,
-    overflow: 'hidden'
+    height: 100,
+    overflow: 'hidden',
 };
 const _gridRoot = {px: 2, pb: 2};
 
 
 const useAlbums = (link) => {
+    const [selected, setSelected] = useState(-1);
     const {albums, isAlbumsLoaded} = useSelector(state => state.album.albums);
     const {imageWidth} = useBreakpoint();
+
+    const handleViewDescription = (index) => {
+        setSelected(selected === index ? -1 : index);
+    };
 
     const imageHeight = imageWidth * .6;
     const albumList = isAlbumsLoaded
@@ -33,6 +41,7 @@ const useAlbums = (link) => {
             let albumCard = type === "youtube"
                 ? (
                     <iframe
+                        title={title}
                         width={imageWidth}
                         height={imageHeight}
                         src={albumLink}
@@ -62,7 +71,8 @@ const useAlbums = (link) => {
                     <Card sx={_cardRoot}>
                         <CardActionArea>
                             {albumCard}
-                            <CardContent sx={_cardContent}>
+                            <CardContent sx={[selected === index ? null : _cardContent, _cardContentFixed]}
+                                         onClick={() => handleViewDescription(index)}>
                                 <Typography gutterBottom variant="h5" component="div">
                                     {title}
                                 </Typography>
