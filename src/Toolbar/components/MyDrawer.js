@@ -5,6 +5,19 @@ import {drawer} from "../../Utils/Constants";
 
 import {Box, Drawer} from "@mui/material";
 
+const _box = {
+    width: {sm: drawer.width},
+    flexShrink: {sm: 0}
+};
+const _drawerMobile = {
+    display: {xs: 'block', sm: 'none'},
+    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawer.width},
+};
+const _drawerDesktop = {
+    display: {xs: 'none', sm: 'block'},
+    '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawer.width},
+};
+
 
 const MyDrawer = (props) => {
     const {window, mobileOpen, onToggle} = props;
@@ -13,24 +26,14 @@ const MyDrawer = (props) => {
         ? () => window().document.body
         : undefined;
 
-    const box = {width: {sm: drawer.width}, flexShrink: {sm: 0}};
-    const drawerMobile = {
-        display: {xs: 'block', sm: 'none'},
-        '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawer.width},
-    };
-    const drawerDesktop = {
-        display: {xs: 'none', sm: 'block'},
-        '& .MuiDrawer-paper': {boxSizing: 'border-box', width: drawer.width},
-    };
-
 
     return (
         <Box
-            sx={box}
+            sx={_box}
             component="nav"
         >
             <Drawer
-                sx={drawerMobile}
+                sx={_drawerMobile}
                 container={container}
                 variant="temporary"
                 open={mobileOpen}
@@ -39,10 +42,10 @@ const MyDrawer = (props) => {
                     keepMounted: true, // Better open performance on mobile.
                 }}
             >
-                <MyMenu/>
+                <MyMenu onClick={onToggle}/>
             </Drawer>
             <Drawer
-                sx={drawerDesktop}
+                sx={_drawerDesktop}
                 variant="permanent"
                 open
             >

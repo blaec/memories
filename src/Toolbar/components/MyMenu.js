@@ -13,7 +13,7 @@ import PhotoSizeSelectActualTwoToneIcon from '@mui/icons-material/PhotoSizeSelec
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
 
 
-const getMenuItemsBlock = (itemsData, pathname) => {
+const getMenuItemsBlock = (itemsData, pathname, onClick) => {
     return  itemsData.map((item, index) => {
             const {text, link, icon, style} = item;
 
@@ -25,6 +25,7 @@ const getMenuItemsBlock = (itemsData, pathname) => {
                     icon={icon}
                     style={style}
                     pathname={pathname}
+                    onClick={onClick}
                 />
             );
         }
@@ -81,25 +82,26 @@ const otherItemsData = [
 ];
 
 
-const MyMenu = () => {
+const MyMenu = (props) => {
+    const{onClick} = props;
     const {pathname} = useLocation();
 
     return (
         <div>
             <Toolbar/>
             <List>
-                {getMenuItemsBlock(mainItemsData, pathname)}
+                {getMenuItemsBlock(mainItemsData, pathname, onClick)}
                 <MyCollapseListItem
                     caption="В гостях"
                     icon={<LuggageTwoToneIcon/>}
-                    menuBlock={() => getMenuItemsBlock(guestItemsData, pathname)}
+                    menuBlock={() => getMenuItemsBlock(guestItemsData, pathname, onClick)}
                 />
                 <MyCollapseListItem
                     caption="Фото из"
                     icon={<ConnectingAirportsTwoToneIcon/>}
-                    menuBlock={() => getMenuItemsBlock(travelItemsData, pathname)}
+                    menuBlock={() => getMenuItemsBlock(travelItemsData, pathname, onClick)}
                 />
-                {getMenuItemsBlock(otherItemsData, pathname)}
+                {getMenuItemsBlock(otherItemsData, pathname, onClick)}
                 {/*<Divider/>*/}
             </List>
         </div>

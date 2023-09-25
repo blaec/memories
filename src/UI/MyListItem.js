@@ -5,7 +5,7 @@ import {ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 
 
 const MyListItem = (props) => {
-    const {caption, icon, link, style, pathname} = props;
+    const {caption, icon, link, style, pathname, onClick} = props;
 
     const isSelected = pathname.includes(link);
     const activeColor = isSelected ? {color: 'primary.main'} : null;
@@ -16,6 +16,7 @@ const MyListItem = (props) => {
             selected={isSelected}
             component={NavLink} to={link}
             sx={style}
+            onClick={onClick}
         >
             <ListItemIcon sx={activeColor}>{icon}</ListItemIcon>
             <ListItemText sx={activeColor} primary={caption}/>
