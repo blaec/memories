@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useLocation} from "react-router";
 
 import {Collapse, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -6,8 +7,9 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 
 
 const MyCollapseListItem = (props) => {
-    const {caption, icon, menuBlock} = props;
-    const [open, setOpen] = useState(false);
+    const {caption, icon, menuItems, menuBlock} = props;
+    const {pathname} = useLocation();
+    const [open, setOpen] = useState(menuItems && menuItems.some(mi => mi.link === pathname));
 
     const handleClick = () => {
         setOpen(!open);

@@ -94,11 +94,13 @@ const MyMenu = (props) => {
                 <MyCollapseListItem
                     caption="В гостях"
                     icon={<LuggageTwoToneIcon/>}
+                    menuItems={guestItemsData}
                     menuBlock={() => getMenuItemsBlock(guestItemsData, pathname, onClick)}
                 />
                 <MyCollapseListItem
                     caption="Фото из"
                     icon={<ConnectingAirportsTwoToneIcon/>}
+                    menuItems={travelItemsData}
                     menuBlock={() => getMenuItemsBlock(travelItemsData, pathname, onClick)}
                 />
                 {getMenuItemsBlock(otherItemsData, pathname, onClick)}
