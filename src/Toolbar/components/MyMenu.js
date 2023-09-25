@@ -41,13 +41,13 @@ const mainItemsData = [
 const guestItemsData = [
     {
         text: "в Израиле",
-        link: reactLinks.guestInIsrael,
+        link: reactLinks.guestsInIsrael,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },
     {
         text: "в Кременчуге",
-        link: reactLinks.guestInKremenchuk,
+        link: reactLinks.guestsInKremenchuk,
         icon: <ArrowRightTwoToneIcon/>,
         style: {pl: 4}
     },

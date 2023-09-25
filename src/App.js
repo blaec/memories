@@ -5,10 +5,13 @@ import {useDispatch} from "react-redux";
 import Layout from "./hoc/Layout";
 import {reactLinks} from "./Utils/UriUtils";
 import Memories from "./Pages/Memories";
-import Settings from "./Pages/Settings";
 import {fetchAlbums} from "./store/state/album/album-action";
 import ImagesFromCountries from "./Pages/ImagesFromCountries";
 import ImagesFromIsrael from "./Pages/ImagesFromIsrael";
+import GuestsInIsrael from "./Pages/GuestsInIsrael";
+import GuestsInKremenchuk from "./Pages/GuestsInKremenchuk";
+import ImagesFromKremenchuk from "./Pages/ImagesFromKremenchuk";
+import MiscImages from "./Pages/MiscImages";
 
 
 const App = () => {
@@ -16,8 +19,8 @@ const App = () => {
 
     const {
         memories,
-        guestInIsrael,
-        guestInKremenchuk,
+        guestsInIsrael,
+        guestsInKremenchuk,
         picsFromIsrael,
         picsFromKremenchuk,
         picsFromCountries,
@@ -30,12 +33,12 @@ const App = () => {
 
                 {/* Menu items */}
                 <Route path={memories} element={<Memories/>}/>
-                <Route path={guestInIsrael} element={<Memories/>}/>
-                <Route path={guestInKremenchuk} element={<Memories/>}/>
+                <Route path={guestsInIsrael} element={<GuestsInIsrael/>}/>
+                <Route path={guestsInKremenchuk} element={<GuestsInKremenchuk/>}/>
                 <Route path={picsFromIsrael} element={<ImagesFromIsrael/>}/>
-                <Route path={picsFromKremenchuk} element={<Memories/>}/>
+                <Route path={picsFromKremenchuk} element={<ImagesFromKremenchuk/>}/>
                 <Route path={picsFromCountries} element={<ImagesFromCountries/>}/>
-                <Route path={misc} element={<Settings/>}/>
+                <Route path={misc} element={<MiscImages/>}/>
 
                 <Route path="*" element={<Navigate replace to={memories}/>}/>
             </Routes>
