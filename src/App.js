@@ -12,6 +12,7 @@ import GuestsInIsrael from "./Pages/GuestsInIsrael";
 import GuestsInKremenchuk from "./Pages/GuestsInKremenchuk";
 import ImagesFromKremenchuk from "./Pages/ImagesFromKremenchuk";
 import MiscImages from "./Pages/MiscImages";
+import Instructions from "./Pages/Instructions/Instructions";
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
         picsFromKremenchuk,
         picsFromCountries,
         misc,
+        instructions,
     } = reactLinks;
 
     const layout = (
@@ -39,8 +41,9 @@ const App = () => {
                 <Route path={picsFromKremenchuk} element={<ImagesFromKremenchuk/>}/>
                 <Route path={picsFromCountries} element={<ImagesFromCountries/>}/>
                 <Route path={misc} element={<MiscImages/>}/>
+                <Route path={instructions} element={<Instructions/>}/>
 
-                <Route path="*" element={<Navigate replace to={memories}/>}/>
+                <Route path="*" element={<Navigate replace to={instructions}/>}/>
             </Routes>
         </Layout>
     );

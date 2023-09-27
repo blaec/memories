@@ -68,7 +68,7 @@ const useAlbums = (link) => {
 
             return (
                 <Grid key={index} item xs={12} md={6} lg={4} xl={3}>
-                    <Card sx={_cardRoot}>
+                    <Card sx={_cardRoot} elevation={3}>
                         <CardActionArea>
                             {albumCard}
                             <CardContent sx={[selected === index ? null : _cardContent, _cardContentFixed]}
