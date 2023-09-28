@@ -7,4 +7,5 @@ export const reactLinks = {
     picsFromKremenchuk: "/pics-from-kremenchuk",
     picsFromCountries: "/pics-from-countries",
     misc: "/misc",
+    instructions: "/instructions",
 };

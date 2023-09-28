@@ -5,12 +5,13 @@ import MyListItem from "../../UI/MyListItem";
 import {reactLinks} from "../../Utils/UriUtils";
 import MyCollapseListItem from "../../UI/MyCollapseListItem";
 
-import {List, Toolbar} from "@mui/material";
+import {Divider, List, Toolbar} from "@mui/material";
 import EditNoteTwoToneIcon from '@mui/icons-material/EditNoteTwoTone';
 import LuggageTwoToneIcon from '@mui/icons-material/LuggageTwoTone';
 import ConnectingAirportsTwoToneIcon from '@mui/icons-material/ConnectingAirportsTwoTone';
 import PhotoSizeSelectActualTwoToneIcon from '@mui/icons-material/PhotoSizeSelectActualTwoTone';
 import ArrowRightTwoToneIcon from '@mui/icons-material/ArrowRightTwoTone';
+import HelpTwoToneIcon from '@mui/icons-material/HelpTwoTone';
 
 
 const getMenuItemsBlock = (itemsData, pathname, onClick) => {
@@ -80,6 +81,13 @@ const otherItemsData = [
         icon: <PhotoSizeSelectActualTwoToneIcon/>
     },
 ];
+const settingsItemData = [
+    {
+        text: "Инструкции",
+        link: reactLinks.instructions,
+        icon: <HelpTwoToneIcon/>
+    },
+];
 
 
 const MyMenu = (props) => {
@@ -90,6 +98,8 @@ const MyMenu = (props) => {
         <div>
             <Toolbar/>
             <List>
+                {getMenuItemsBlock(settingsItemData, pathname, onClick)}
+                <Divider/>
                 {getMenuItemsBlock(mainItemsData, pathname, onClick)}
                 <MyCollapseListItem
                     caption="В гостях"
@@ -104,7 +114,6 @@ const MyMenu = (props) => {
                     menuBlock={() => getMenuItemsBlock(travelItemsData, pathname, onClick)}
                 />
                 {getMenuItemsBlock(otherItemsData, pathname, onClick)}
-                {/*<Divider/>*/}
             </List>
         </div>
     )
