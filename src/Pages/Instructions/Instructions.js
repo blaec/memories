@@ -1,11 +1,12 @@
 import React from 'react';
 
 import InfoBlock from "./components/InfoBlock";
+import InfoImage from "./components/InfoImage";
+import InfoLink from "./components/InfoLink";
 
 import {Box, Typography} from "@mui/material";
 
 const _root = {p: 2};
-const imgWidth = '330px';
 
 
 const Instructions = () => {
@@ -62,7 +63,7 @@ const Instructions = () => {
                 Для того, чтобы открыть ролик вне сайта - нужно щелкнуть по заголовку ролика как это показано
                 ниже.
             </Typography>
-            <img src="/images/open_video_outside_the_site.png" alt="" width={imgWidth}/>
+            <InfoImage path="/images/open_video_outside_the_site.png"/>
             <Typography>
                 Как и с альбомом - для просмотра длинного описания - нужно щелкнуть по нему один раз.
             </Typography>
@@ -76,12 +77,10 @@ const Instructions = () => {
             <Typography>
                 Здесь можно ознакомиться с подробной инструкцией как создать альбом:
             </Typography>
-            <a
-                href="https://support.google.com/photos/answer/6128849?hl=ru&co=GENIE.Platform%3DAndroid&oco=0"
-                rel="noreferrer"
-                target="_blank">
-                Как создавать и редактировать фотоальбомы
-            </a>
+            <InfoLink
+                link="https://support.google.com/photos/answer/6128849?hl=ru&co=GENIE.Platform%3DAndroid&oco=0"
+                text="Как создавать и редактировать фотоальбомы"
+            />
             <Typography>
                 После создания альбома - нужно открыть к нему доступ и поделиться ссылкой на него.
             </Typography>
@@ -95,21 +94,15 @@ const Instructions = () => {
             <Typography>
                 Здесь можно ознакомиться с подробной инструкцией как создать видеоролик:
             </Typography>
-            <a
-                href="https://support.google.com/youtube/answer/57407?hl=ru&co=GENIE.Platform%3DDesktop"
-                rel="noreferrer"
-                target="_blank">
-                Как загружать видео на YouTube
-            </a>
+            <InfoLink
+                link="https://support.google.com/youtube/answer/57407?hl=ru&co=GENIE.Platform%3DDesktop"
+                text="Как загружать видео на YouTube"
+            />
             <Typography>
                 После создания альбома - нужно открыть к нему доступ и поделиться ссылкой на него.
             </Typography>
-            <Box>
-                <img src="/images/share_youtube.png" alt="" width={imgWidth}/>
-            </Box>
-            <Box>
-                <img src="/images/embed_youtube.png" alt="" width={imgWidth}/>
-            </Box>
+            <InfoImage path="/images/share_youtube.png"/>
+            <InfoImage path="/images/embed_youtube.png"/>
         </>
     );
 
