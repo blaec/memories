@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import useBreakpoint from "../hooks/use-breakpoint";
 import Iframe from "./components/Iframe";
 import LinkedImage from "./components/LinkedImage";
+import {cardType} from "../Utils/Constants";
 
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
 
@@ -38,7 +39,7 @@ const useAlbums = (link) => {
         ? albums[link].map((album, index) => {
             const {albumLink, albumImage, title, description, type} = album;
 
-            const albumCard = type === "youtube"
+            const albumCard = type === cardType.youtube
                 ? (
                     <Iframe
                         title={title}

@@ -1,5 +1,9 @@
 import React from 'react';
+
+import {cardType} from "../../Utils/Constants";
+
 import {Box} from "@mui/material";
+
 
 const _playButton = {
     position: 'absolute',
@@ -21,8 +25,12 @@ const _hidden = {
 const LinkedImage = (props) => {
     const {type, link, image, title, width, height} = props;
 
-    const youtubeRootStyle = type === 'youtubeManual' ? _container : null;
-    const youtubeButtonStyle = type === 'youtubeManual' ? _playButton : _hidden;
+    const youtubeRootStyle = type === cardType.youtubeManual
+        ? _container
+        : null;
+    const youtubeButtonStyle = type === cardType.youtubeManual
+        ? _playButton
+        : _hidden;
     const errImage = `https://via.placeholder.com/${width}x${height}.png?text=${title}`;
     const _imageStyle = {
         width: width,
