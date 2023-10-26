@@ -53,7 +53,8 @@ const useAlbums = (link) => {
             const _imageStyle = {width: imageWidth, height: imageHeight, objectFit: 'cover'};
             const errImage = `https://via.placeholder.com/${imageWidth}x${imageHeight}.png?text=${title}`;
 
-            let youtubeButtonStyle = type === 'youtubeManual' ? _playButton : _hidden;
+            const youtubeRootStyle = type === 'youtubeManual' ? _container : null;
+            const youtubeButtonStyle = type === 'youtubeManual' ? _playButton : _hidden;
             let albumCard = type === "youtube"
                 ? (
                     <iframe
@@ -65,7 +66,7 @@ const useAlbums = (link) => {
                     </iframe>
                 )
                 : (
-                    <div style={_container}>
+                    <div style={youtubeRootStyle}>
                         <a href={albumLink}
                            target="_blank"
                            rel="noreferrer"
