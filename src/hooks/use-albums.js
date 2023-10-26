@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 
 import useBreakpoint from "../hooks/use-breakpoint";
+import Iframe from "./components/Iframe";
+import LinkedImage from "./components/LinkedImage";
 
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
 
@@ -20,21 +22,6 @@ const _cardContent = {
     overflow: 'hidden',
 };
 const _gridRoot = {px: 2, pb: 2};
-const _playButton = {
-    position: 'absolute',
-    width: '70px',
-    height: '50px',
-    left: '50%',
-    top: '50%',
-    marginLeft: '-35px', /*half of the width */
-    marginTop: '-25px', /*half of the height */
-};
-const _container = {
-    position: 'relative'
-};
-const _hidden = {
-    display: 'none',
-};
 
 
 const useAlbums = (link) => {
@@ -50,43 +37,25 @@ const useAlbums = (link) => {
     const albumList = isAlbumsLoaded
         ? albums[link].map((album, index) => {
             const {albumLink, albumImage, title, description, type} = album;
-            const _imageStyle = {width: imageWidth, height: imageHeight, objectFit: 'cover'};
-            const errImage = `https://via.placeholder.com/${imageWidth}x${imageHeight}.png?text=${title}`;
 
-            const youtubeRootStyle = type === 'youtubeManual' ? _container : null;
-            const youtubeButtonStyle = type === 'youtubeManual' ? _playButton : _hidden;
-            let albumCard = type === "youtube"
+            const albumCard = type === "youtube"
                 ? (
-                    <iframe
+                    <Iframe
                         title={title}
                         width={imageWidth}
                         height={imageHeight}
-                        src={albumLink}
-                        allowFullScreen>
-                    </iframe>
+                        link={albumLink}
+                    />
                 )
                 : (
-                    <div style={youtubeRootStyle}>
-                        <a href={albumLink}
-                           target="_blank"
-                           rel="noreferrer"
-                        >
-                            <img
-                                src={albumImage}
-                                alt=""
-                                style={_imageStyle}
-                                onError={(e) => {
-                                    e.target.onerror = null;
-                                    e.target.src = {errImage}
-                                }}
-                            />
-                            <img
-                                src="/images/yt_playbutton.png"
-                                alt=""
-                                style={youtubeButtonStyle}
-                            />
-                        </a>
-                    </div>
+                    <LinkedImage
+                        type={type}
+                        link={albumLink}
+                        image={albumImage}
+                        title={title}
+                        width={imageWidth}
+                        height={imageHeight}
+                    />
                 );
 
 
