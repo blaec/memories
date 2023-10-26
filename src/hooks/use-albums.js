@@ -20,6 +20,21 @@ const _cardContent = {
     overflow: 'hidden',
 };
 const _gridRoot = {px: 2, pb: 2};
+const _playButton = {
+    position: 'absolute',
+    width: '70px',
+    height: '50px',
+    left: '50%',
+    top: '50%',
+    marginLeft: '-35px', /*half of the width */
+    marginTop: '-25px', /*half of the height */
+};
+const _container = {
+    position: 'relative'
+};
+const _hidden = {
+    display: 'none',
+};
 
 
 const useAlbums = (link) => {
@@ -38,6 +53,7 @@ const useAlbums = (link) => {
             const _imageStyle = {width: imageWidth, height: imageHeight, objectFit: 'cover'};
             const errImage = `https://via.placeholder.com/${imageWidth}x${imageHeight}.png?text=${title}`;
 
+            let youtubeButtonStyle = type === 'youtubeManual' ? _playButton : _hidden;
             let albumCard = type === "youtube"
                 ? (
                     <iframe
@@ -49,20 +65,27 @@ const useAlbums = (link) => {
                     </iframe>
                 )
                 : (
-                    <a href={albumLink}
-                       target="_blank"
-                       rel="noreferrer"
-                    >
-                        <img
-                            src={albumImage}
-                            alt=""
-                            style={_imageStyle}
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = {errImage}
-                            }}
-                        />
-                    </a>
+                    <div style={_container}>
+                        <a href={albumLink}
+                           target="_blank"
+                           rel="noreferrer"
+                        >
+                            <img
+                                src={albumImage}
+                                alt=""
+                                style={_imageStyle}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = {errImage}
+                                }}
+                            />
+                            <img
+                                src="/images/yt_playbutton.png"
+                                alt=""
+                                style={youtubeButtonStyle}
+                            />
+                        </a>
+                    </div>
                 );
 
 
