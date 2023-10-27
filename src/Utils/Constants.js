@@ -6,3 +6,10 @@ export const toolbarHeight = {
 export const drawer = {
     width: 240,
 };
+
+export const cardType = Object.freeze(
+    {
+        youtube: 'youtube',
+        youtubeManual: 'youtubeManual',
+    }
+);

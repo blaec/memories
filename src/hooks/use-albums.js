@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 
 import useBreakpoint from "../hooks/use-breakpoint";
+import Iframe from "./components/Iframe";
+import LinkedImage from "./components/LinkedImage";
+import {cardType} from "../Utils/Constants";
 
 import {Card, CardActionArea, CardContent, Grid, Typography} from "@mui/material";
 
@@ -35,34 +38,25 @@ const useAlbums = (link) => {
     const albumList = isAlbumsLoaded
         ? albums[link].map((album, index) => {
             const {albumLink, albumImage, title, description, type} = album;
-            const _imageStyle = {width: imageWidth, height: imageHeight, objectFit: 'cover'};
-            const errImage = `https://via.placeholder.com/${imageWidth}x${imageHeight}.png?text=${title}`;
 
-            let albumCard = type === "youtube"
+            const albumCard = type === cardType.youtube
                 ? (
-                    <iframe
+                    <Iframe
                         title={title}
                         width={imageWidth}
                         height={imageHeight}
-                        src={albumLink}
-                        allowFullScreen>
-                    </iframe>
+                        link={albumLink}
+                    />
                 )
                 : (
-                    <a href={albumLink}
-                       target="_blank"
-                       rel="noreferrer"
-                    >
-                        <img
-                            src={albumImage}
-                            alt=""
-                            style={_imageStyle}
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = {errImage}
-                            }}
-                        />
-                    </a>
+                    <LinkedImage
+                        type={type}
+                        link={albumLink}
+                        image={albumImage}
+                        title={title}
+                        width={imageWidth}
+                        height={imageHeight}
+                    />
                 );
 
 
