@@ -1,3 +1,8 @@
+# Using file as db
+- `npm install -g json-server` _install server_
+- `json-server --watch config/db.json --host 127.0.0.1 --port 3033` _start server_ [link](https://medium.com/how-to-react/how-to-use-json-file-as-a-server-for-fake-api-in-react-js-6b72606023b7)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
