@@ -1,5 +1,6 @@
 export const reactLinks = {
-    home: "/memories",
+    home: "/instructions",
+    instructions: "/instructions",
     memories: "/memories",
     guestsInIsrael: "/guests-in-israel",
     guestsInKremenchuk: "/guests-in-kremenchuk",
@@ -7,5 +8,4 @@ export const reactLinks = {
     picsFromKremenchuk: "/pics-from-kremenchuk",
     picsFromCountries: "/pics-from-countries",
     misc: "/misc",
-    instructions: "/instructions",
 };
