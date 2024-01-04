@@ -5,7 +5,8 @@ import Iframe from "./Iframe";
 import LinkedImage from "./LinkedImage";
 import useBreakpoint from "../use-breakpoint";
 
-import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
+import {Card, CardActionArea, CardContent, CardHeader, CardMedia, Chip, Tooltip, Typography} from "@mui/material";
+import CameraTwoToneIcon from '@mui/icons-material/CameraTwoTone';
 
 const _cardRoot = {
     mt: 2,
@@ -24,7 +25,7 @@ const _cardContent = {
 
 
 const AlbumCard = (props) => {
-    const {index, album: {albumLink, albumImage, title, description, type}} = props;
+    const {index, album: {albumLink, albumImage, title, description, type, period, added}} = props;
     const {imageWidth} = useBreakpoint();
     const imageHeight = imageWidth * .6;
     const [selected, setSelected] = useState(-1);
@@ -57,12 +58,28 @@ const AlbumCard = (props) => {
                 height={imageHeight}
             />
         );
+    const chipLabel = type !== undefined
+        ? "видео"
+        : "альбом"
+
+    let isNewAlbum = added !== undefined
+        && (new Date() - new Date(added)) / (1000 * 60 * 60 * 24) < 60;
+    const newAlbum = isNewAlbum
+        ? <Tooltip title="Добавлено за последние 60 дней"><Chip label="новинка" color="error" size="small"/></Tooltip>
+        : <Chip icon={<CameraTwoToneIcon />} label={chipLabel} variant="outlined" size="small"/>
 
 
     return (
         <Card sx={_cardRoot} elevation={3}>
-            <CardActionArea>
+            <CardHeader
+                avatar={newAlbum}
+                title={period}
+                // subheader="subheader"
+            />
+            <CardMedia>
                 {albumCard}
+            </CardMedia>
+            <CardActionArea>
                 <CardContent sx={_cardContext}
                              onClick={() => handleViewDescription(index)}>
                     <Typography
