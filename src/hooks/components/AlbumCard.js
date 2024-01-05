@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 
-import {cardType} from "../../Utils/Constants";
+import {cardType, RECENT_PERIOD} from "../../Utils/Constants";
 import Iframe from "./Iframe";
 import LinkedImage from "./LinkedImage";
 import useBreakpoint from "../use-breakpoint";
+import {isAddedRecently} from "../../Utils/Utils";
 
 import {Card, CardActionArea, CardContent, CardHeader, CardMedia, Chip, Tooltip, Typography} from "@mui/material";
 import CameraTwoToneIcon from '@mui/icons-material/CameraTwoTone';
 
 const _cardRoot = {
     mt: 2,
-    borderRadius: 2,
+    borderRadius: 3,
     transition: '0.2s', '&:hover': {
         transform: 'scale(1.03)',
     }
@@ -62,10 +63,8 @@ const AlbumCard = (props) => {
         ? "видео"
         : "альбом"
 
-    let isNewAlbum = added !== undefined
-        && (new Date() - new Date(added)) / (1000 * 60 * 60 * 24) < 60;
-    const newAlbum = isNewAlbum
-        ? <Tooltip title="Добавлено за последние 60 дней"><Chip label="новинка" color="error" size="small"/></Tooltip>
+    const newAlbum = isAddedRecently(added)
+        ? <Tooltip title={`Добавлено за последние ${RECENT_PERIOD} дней`}><Chip label="новинка" color="error" size="small"/></Tooltip>
         : <Chip icon={<CameraTwoToneIcon />} label={chipLabel} variant="outlined" size="small"/>
 
 

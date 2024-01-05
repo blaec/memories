@@ -13,3 +13,5 @@ export const cardType = Object.freeze(
         youtubeManual: 'youtubeManual',
     }
 );
+
+export const RECENT_PERIOD = 60;
