@@ -37,7 +37,7 @@ const Instructions = () => {
             <Box>
                 <Divider sx={_newAlbums}>
                     <Chip
-                        label={`Новинки за последние ${RECENT_PERIOD} дней`}
+                        label={`Новинки на сайте за последние ${RECENT_PERIOD} дней`}
                         color="error"
                         variant="outlined"
                     />
