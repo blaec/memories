@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const InfoLink = (props) => {
     const {link, text} = props;
 

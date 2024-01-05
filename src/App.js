@@ -19,6 +19,8 @@ const App = () => {
     const dispatch = useDispatch();
 
     const {
+        home,
+        instructions,
         memories,
         guestsInIsrael,
         guestsInKremenchuk,
@@ -26,7 +28,6 @@ const App = () => {
         picsFromKremenchuk,
         picsFromCountries,
         misc,
-        instructions,
     } = reactLinks;
 
     const layout = (
@@ -34,6 +35,7 @@ const App = () => {
             <Routes>
 
                 {/* Menu items */}
+                <Route path={instructions} element={<Instructions/>}/>
                 <Route path={memories} element={<Memories/>}/>
                 <Route path={guestsInIsrael} element={<GuestsInIsrael/>}/>
                 <Route path={guestsInKremenchuk} element={<GuestsInKremenchuk/>}/>
@@ -41,9 +43,8 @@ const App = () => {
                 <Route path={picsFromKremenchuk} element={<ImagesFromKremenchuk/>}/>
                 <Route path={picsFromCountries} element={<ImagesFromCountries/>}/>
                 <Route path={misc} element={<MiscImages/>}/>
-                <Route path={instructions} element={<Instructions/>}/>
 
-                <Route path="*" element={<Navigate replace to={instructions}/>}/>
+                <Route path="*" element={<Navigate replace to={home}/>}/>
             </Routes>
         </Layout>
     );

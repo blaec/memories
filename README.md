@@ -2,6 +2,17 @@
 - `npm install -g json-server` _install server_
 - `json-server --watch config/db.json --host 127.0.0.1 --port 3033` _start server_ [link](https://medium.com/how-to-react/how-to-use-json-file-as-a-server-for-fake-api-in-react-js-6b72606023b7)
 
+---
+
+# Deployment
+`json-server` can run only on local-ip<br/>
+`axios-server` forward to public ip<br/>
+add 2 rules for port-forwarding in router
+- port 3003 -> 10.100.102.5:3003
+- port 3033 -> 10.100.102.5:3033
+
+---
+
 
 # Getting Started with Create React App
 
