@@ -25,6 +25,6 @@ export const imageGroup = Object.freeze(
         memories: 'memories',
         miscImages: 'miscImages'
     }
-)
+);
 
 export const RECENT_PERIOD = 60;

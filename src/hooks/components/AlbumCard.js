@@ -64,8 +64,20 @@ const AlbumCard = (props) => {
         : "альбом"
 
     const newAlbum = isAddedRecently(added)
-        ? <Tooltip title={`Добавлено за последние ${RECENT_PERIOD} дней`}><Chip label="новинка" color="error" size="small"/></Tooltip>
-        : <Chip icon={<CameraTwoToneIcon />} label={chipLabel} variant="outlined" size="small"/>
+        ? (
+            <Tooltip title={`Добавлено за последние ${RECENT_PERIOD} дней`}>
+                <Chip
+                    label="новинка"
+                    color="error"
+                    size="small"
+                />
+            </Tooltip>
+          )
+        : <Chip
+            icon={<CameraTwoToneIcon/>}
+            label={chipLabel}
+            variant="outlined"
+            size="small"/>
 
 
     return (
