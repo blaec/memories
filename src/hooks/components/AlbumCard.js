@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
 
-import {cardType} from "../../Utils/Constants";
+import {cardType, RECENT_PERIOD} from "../../Utils/Constants";
 import Iframe from "./Iframe";
 import LinkedImage from "./LinkedImage";
 import useBreakpoint from "../use-breakpoint";
+import {isAddedRecently} from "../../Utils/Utils";
 
-import {Card, CardActionArea, CardContent, Typography} from "@mui/material";
+import {Card, CardActionArea, CardContent, CardHeader, CardMedia, Chip, Tooltip, Typography} from "@mui/material";
+import CameraTwoToneIcon from '@mui/icons-material/CameraTwoTone';
 
 const _cardRoot = {
     mt: 2,
-    borderRadius: 2,
+    borderRadius: 3,
     transition: '0.2s', '&:hover': {
         transform: 'scale(1.03)',
     }
@@ -24,7 +26,7 @@ const _cardContent = {
 
 
 const AlbumCard = (props) => {
-    const {index, album: {albumLink, albumImage, title, description, type}} = props;
+    const {index, album: {albumLink, albumImage, title, description, type, period, added}} = props;
     const {imageWidth} = useBreakpoint();
     const imageHeight = imageWidth * .6;
     const [selected, setSelected] = useState(-1);
@@ -57,12 +59,38 @@ const AlbumCard = (props) => {
                 height={imageHeight}
             />
         );
+    const chipLabel = type !== undefined
+        ? "видео"
+        : "альбом"
+
+    const newAlbum = isAddedRecently(added)
+        ? (
+            <Tooltip title={`Добавлено за последние ${RECENT_PERIOD} дней`}>
+                <Chip
+                    label="новинка"
+                    color="error"
+                    size="small"
+                />
+            </Tooltip>
+          )
+        : <Chip
+            icon={<CameraTwoToneIcon/>}
+            label={chipLabel}
+            variant="outlined"
+            size="small"/>
 
 
     return (
         <Card sx={_cardRoot} elevation={3}>
-            <CardActionArea>
+            <CardHeader
+                avatar={newAlbum}
+                title={period}
+                // subheader="subheader"
+            />
+            <CardMedia>
                 {albumCard}
+            </CardMedia>
+            <CardActionArea>
                 <CardContent sx={_cardContext}
                              onClick={() => handleViewDescription(index)}>
                     <Typography
