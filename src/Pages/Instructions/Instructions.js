@@ -3,7 +3,7 @@ import React from 'react';
 import InfoBlock from "./components/InfoBlock";
 import {instructionsData} from "./components/InfoData";
 import useAlbums from "../../hooks/use-albums";
-import {RECENT_PERIOD} from "../../Utils/Constants";
+import {imageGroup, RECENT_PERIOD} from "../../Utils/Constants";
 
 import {Box, Chip, Divider} from "@mui/material";
 
@@ -42,7 +42,7 @@ const Instructions = () => {
                         variant="outlined"
                     />
                 </Divider>
-                {useAlbums("", true)}
+                {useAlbums(imageGroup.newImages)}
             </Box>
         </>
     );
