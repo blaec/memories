@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    image: memories_frontend:1.1.1
+    ports:
+      - 3003:80
+  json-server:
+    build: ./config
+    image: memories_json-server:1.1.1
+    ports:
+      - 3033:3033

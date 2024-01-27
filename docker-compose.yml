@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  frontend:
+    build: .
+    ports:
+      - 3003:3000
+  json-server:
+    build: ./config
+    ports:
+      - 3033:3033
