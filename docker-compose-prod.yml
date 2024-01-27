@@ -5,10 +5,12 @@ services:
       context: .
       dockerfile: Dockerfile-prod
     image: memories_frontend:1.1.1
+    restart: unless-stopped
     ports:
       - 3003:80
   json-server:
     build: ./config
     image: memories_json-server:1.1.1
+    restart: unless-stopped
     ports:
       - 3033:3033
